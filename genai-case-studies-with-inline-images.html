@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI Case Studies</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f0f4f8;
+            --text-color: #333;
+            --transition-speed: 0.3s;
+            --background-color: #f9fafc;
+            --content-background: #f0f0f0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--background-color);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 4.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+		h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+		
+        .slider-container {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 300;
+            color: #666;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity var(--transition-speed);
+            background: linear-gradient(to right, #4a90e2, #e24a4a);
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border: 2px solid #4a90e2;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border: 2px solid #4a90e2;
+        }
+
+        .slider::-webkit-slider-thumb:hover,
+        .slider::-moz-range-thumb:hover {
+            box-shadow: 0 0 0 8px rgba(74, 144, 226, 0.1);
+            transform: scale(1.1);
+        }
+
+        #caseContent {
+            background-color: var(--content-background);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .case-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        @keyframes flyInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+		
+        .section {
+            background-color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+			animation: flyInFromRight 0.5s ease-out;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            margin: 0;
+            color: #555;
+            font-weight: 300;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+            .slider-container {
+                padding: 20px;
+            }
+            .section {
+                padding: 20px;
+            }
+		}
+		
+		#scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #0066cc;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>生成式AI創意案例解析</h1>
+	<h2>六個創意結合生成式AI的案例解析<br>看你是要大口吃下"一塊小蛋糕"還是直上挑戰"終極大魔王"！</h2>
+    <div class="slider-container">
+        <div class="slider-labels">
+            <span>一塊小蛋糕</span>
+            <span>終極大魔王</span>
+        </div>
+        <input type="range" min="0" max="5" value="0" class="slider" id="caseSlider">
+        <div class="slider-labels">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+        </div>
+    </div>
+    <div id="caseContent"></div>
+	
+	<!-- Scroll to top button -->
+    <button id="scrollToTopBtn" title="Go to top">TOP</button>
+    <script>
+        // Get the button
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        scrollToTopBtn.onclick = function() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        };
+    </script>
+
+    <script>
+        const slider = document.getElementById('caseSlider');
+        const caseContent = document.getElementById('caseContent');
+
+        const cases = [
+            {
+                title: "Social Posts<br>PXMart、全國電子、Introversify",
+                intro: "1. 利用生成式AI工具，生成有趣的圖文，展現現實中不存在的場景，給大家給想像不到的驚喜。<br> \
+				<iframe src='https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/pxmartchannel/posts/917028267119226&show_text=true&width=500' width='500' height='646' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowfullscreen='true' allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'></iframe><br> \
+				2. 快速生成產品的宣傳圖樣。<br> \
+				<iframe src='https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Felifemall.com.tw%2Fposts%2F952391140251636&show_text=true&width=500' width='500' height='660' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowfullscreen='true' allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'></iframe><br> \
+				3. 猜成語、猜歌手、猜地名...我猜我猜我猜猜猜。<br> \
+				<iframe src='https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/introversify/posts/122224725170034100&show_text=true&width=500' width='500' height='680' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowfullscreen='true' allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'></iframe>\
+				",
+                userExperience: "追求娛樂、誇大的效果，不追求以假亂真<br>\
+				吸引在社交媒體上的互動或轉發<br>\
+				提升品牌的知名度和關注度<br>\
+				建議加註使用AI工具，管理觀看者的期待<br>\
+				",
+                technology: "外部生圖工具：<br>\
+				- <a href='https://chatgpt.com/' target='_blank'>ChatGPT+Dall-E</a><br>\
+				- <a href='https://copilot.cloud.microsoft/' target='_blank'>Bing+Dall-E</a><br>\
+				- <a href='https://www.midjourney.com/home' target='_blank'>Midjourney</a><br>\
+				- <a href='https://www.midjourney.com/home' target='_blank'>Leonardo.ai</a><br>\
+				- <a href='https://ideogram.ai/' target='_blank'>Ideogram</a><br>\
+				集團內部生圖工具：<br><a href='https://apps.powerapps.com/play/e/3489a641-3218-eb62-88bf-16d990960551/a/eab91b10-c951-4bec-8185-f429400ba470?tenantId=6e8992ec-76d5-4ea5-8eae-b0c5e558749a&hint=7dec1dfc-2674-4ec1-b4bd-86d66e08c6af&sourcetime=1693377086889&source=portal' target='_blank'>Wonder</a><br>\
+				搭配其他換臉、去背...等編輯工具<br>\
+				",
+                resources: "需要熟悉生圖工具，語法會因為使用的工具有差別<br>\
+				生圖需要時間嘗試，不合常理的圖片容易生成，追求真實的圖片反而不容易<br>\
+				如果有明確的方向，每張圖片完成約需30分鐘<br>\
+				產品圖像或文字需要後製<br>\
+				",
+                prototypes: "生圖教學\
+				"
+            },
+            {
+                title: "UGC Campaign<br>Carrefour、國泰金控x雲門舞集、MX創意思境",
+                intro: "1.家樂福中元節 - 文字內容UGC<br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/jRjzab8mWe0?si=AVB533FHnuOxUOO8' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				2.國泰金控x雲門舞集 - 圖像內容UGC<br>\
+				<a href='https://artree2024.cathaycg.com.tw/' target='_blank'>藝樹萌芽</a><br>\
+				<iframe src='https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fcathaycloudgatebar%2Fposts%2F464674876308498&show_text=true&width=500' width='500' height='780' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowfullscreen='true' allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'></iframe><br>\
+				3.MX創意思境 - 音樂內容UGC<br>\
+				<a href='https://moon2024.mxlab.space/' target='_blank'>Sing to the moon</a><br>\
+				活動已下線，目前可以看到音樂作品集<br>\
+				",
+                userExperience: "過去的UGC活動最大的門檻來自消費者的能力，<br>\
+				現在利用各種生成式AI工具，快速賦能活動參與者，<br>\
+				產出品質更好的UGC作品創造更高的成就感，更有意願轉發分享，品牌也獲得更多優秀的作品，<br>\
+				介面上要提供參與者更多的空間，但同時要防止不當內容的出現。<br>\
+				",
+                technology: "LLM：直接串接OpenAI、Claude<br>\
+				雲端平台：Azure、AWS可選擇多種LLM<br>\
+				圖像：Dall-E、Leonardo.ai有官方API、Midjourneyj無官方API、Stable Diffusion需要自行架設<br>\
+				音樂：Suno無官方API<br><br>\
+				所有的AI工具需要透過API串接，<br>\
+				串接越多的工具(例:同時生成文字、圖像、音樂)，會需要越多的時間等待，<br>\
+				部分AI工具屬不可控的平台，系統的穩定度無法掌握，版權或使用條款也要注意。<br>\
+				串接API都會有額外的成本，通常是訂閱制的收費，訂閱等級也會與執行的速度相關。<br>\
+				生成的內容要排除可能對品牌有害的內容，<br>\
+				但因為生成式AI特性，並非100%可控，需要嚴謹的測試。<br>\
+				UGC產出都留下log，以備不時之需。<br>\
+				",
+                resources: "除了需要熟悉AI工具操作、Prompting的人外，<br>\
+				還需要前後端的工程師，負責網站的界面、功能開發和後端的串接。<br>\
+				",
+                prototypes: ""
+            },
+            {
+                title: "UGC Platform<br>Coca-Cola Create Real Magic",
+                intro: "<a href='https://www.createrealmagic.com/' taregt='_blank'>Coca-Cola Create Real Magic</a><br>\
+				網站目前無活動進行中，展示聖誕節的UGC作品<br>\
+				以下是案例影片<br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/FPGDMj1QUBE?si=dzTPs-SvZkcEQB8j' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				",
+                userExperience: "LLM：直接串接OpenAI、Claude<br>\
+				雲端平台：Azure、AWS可選擇多種LLM<br>\
+				圖像：Dall-E、Leonardo.ai有官方API、Midjourneyj無官方API、Stable Diffusion需要自行架設<br>\
+				音樂：Suno無官方API<br><br>\
+				同時串接文字和圖像(或更多AI工具)的生成式AI整合平台，<br>\
+				提供簡單的編輯工具(例：去背、改色...)，對使用者來說門檻極低，<br>\
+				只要自然語言和簡單的操作，可以發揮極大的創意空間，<br>\
+				平台更新素材或更改主題後，就可以重複使用。<br>\
+				",
+                technology: "需要語言模型和圖像模型的API串接，<br>\
+				編輯、修改作品的的功能，以及前端的介面設計，<br>\
+				可能需要finetune語言或圖像的模型，產出更符合品牌風格的作品。<br>\
+				",
+                resources: "除了需要熟悉AI工具操作、Prompting的人外，<br>\
+				還需要AI工程師finetune模型，這個階段就會需要更多時間以及算力的成本，<br>\
+				以及前後端的工程師，負責網站的界面、功能開發和後端的串接。<br>\
+				",
+                prototypes: ""
+            },
+            {
+                title: "Generated Video<br>Visit Denmark、Toyrus",
+                intro: "1.Visit Denmark<br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/kxUBgD6ZOmE?si=ve4uLud7CQtE9eSQ' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				2.The Origin of Toys”R”Us<br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/ywxFszydgqY?si=rIxophzPVvTwhgl7' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				",
+                userExperience: "透過AI影片創造前所未見的視覺效果，<br>\
+				吸引消費者的目光，也為品牌貼上科技感的標籤。<br>\
+				",
+                technology: "影片腳本 - ChatGPT、Claude<br>\
+				圖像工具 - Midjourney、Stable Diffusion<br>\
+				影像工具 - Runway Gen3、Luma Dream Machine、Kling<br>\
+				音樂工具 - Suno<br>\
+				配音工具 - Runway、Eleven Labs<br>\
+				再加上畫質提升、後製、剪輯的應用。<br>\
+				",
+                resources: "需要有清楚的創意概念，產出影片的腳本，<br>\
+				根據腳本生出每一個鏡頭的靜態圖片，用圖片產出動態，<br>\
+				再經過配樂、後製、剪輯...等步驟。<br>\
+				整個過程中參與的創意人員和過去還是依樣，只是少了實際拍攝的過程。<br>\
+				取代拍攝的是圖片和影像的生成，會需要熟悉相關工具的創作者，<br>\
+				過程中透過不斷的嘗試和調整，比起實拍可以多次嘗試，且不需要考慮取景、搭景或天候等外在因素，<br>\
+				但場景、人物或事物品的細節或動態無法做到100%的精準控制，<br>\
+				要求快就必須犧牲一些細節或品質。<br>\
+				",
+                prototypes: "參考以下幾篇參賽Gen48影片生成比賽的分享：<br>\
+				<a href='https://www.facebook.com/savantshroom/videos/2694405490738781' target='_blank'>Runway GEN:48 第3屆AI生成影片大賽 Food For the Eyes 作品與心得分享</a><br>\
+				<a href='https://www.facebook.com/SarahOddity/posts/482622684775207' target='_blank'>第一次組隊參加AI影片生成比賽</a><br>\
+				<a href='https://www.facebook.com/K4sMotionStudio/videos/493835916793440/' target='_blank'>全AI生成競賽短片 - 金黃色的侵略(The Golden Invasion.) / Runway GEN:48 第3屆AI生成影片大賽心得</a><br>\
+				<a href='https://vocus.cc/article/66e93ab5fd89780001c9a596' target='_blank'>參加AI創作比賽的體悟：讓AI帶著你創作｜Runway GEN48｜48小時創作競賽</a><br>\
+				"
+            },
+            {
+                title: "Virtual Character<br>民視主播敏熙、虛擬人物Aitana、虛擬歌手nævis",
+                intro: "1.民視主播敏熙<br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/Rot6xiDDn4I?si=0PNvHfU5AK8lZQTX' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				<a href='https://today.line.me/tw/v2/article/yzXEneo' target='_blank'>民視與微軟合作推 AI 主播「敏熙」，為何這位美女說話時完全聽不出機械音感？</a><br>\
+				2.虛擬人物Aitana<br>\
+				<iframe src='https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1509963429652724&width=500&show_text=true&height=656&appId' width='500' height='656' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowfullscreen='true' allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'></iframe><br>\
+				<iframe src='https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FAndenHud.com.tw%2Fvideos%2F1161684225107659%2F&show_text=true&width=476&t=0' width='476' height='650' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowfullscreen='true' allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share' allowFullScreen='true'></iframe><br>\
+				<a href='https://www.facebook.com/groups/groupaiart/posts/1481997629357155' target='_blank'>服飾品牌型錄合作</a><br>\
+				3.虛擬歌手nævis<br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/2ZdVzQRkS4c?si=9J6XYVRxb5d2LB-A' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				<a href='https://www.marieclaire.com.tw/entertainment/news/81696/naevis' target='_blank'>nævis是誰？SM首位虛擬藝人，不只出單曲外型還神似太妍</a><br>\
+				",
+                userExperience: "固定的人物形象，加深觀眾對品牌的聯想，<br>\
+				虛擬形象比起真人擁有更大的創意空間<br>\
+				可以帶觀眾到各種意想不到的地方。<br>\
+				對品牌來說有更高的可控性，也降低使用真人可能帶來的風險。<br>\
+				",
+                technology: "創建擬真的人物有多種方式，常見的如<br>\
+				全3D虛擬、圖像模型+微調訓練或真人拍攝後換臉，<br>\
+				也可能是多種技術搭配使用。<br>\
+				圖像工具 - Stable Diffusion 加上各種微調模型或套件，可以固定人物、生出特定的姿勢<br>\
+				影像工具 - SD、Luma Dream Machine...等等<br>\
+				還有其他3D、配音、lip sync...等等工具。<br>\
+				也可以利用如 Heygen 的工具生成 avatar，用在發表演說的場景。<br>\
+				擬真人物得難度在於固定角色，且可以變換裝扮，<br>\
+				這會需要比較高深的操作技巧，如果還要人物動起來，就更不容易了。<br>\
+				",
+                resources: "需要有創意設定人物形象和風格，<br>\
+				加上AI或3D的工程師，視需求進行開發，<br>\
+				之後重複使用也還需要創意與工程師的配合產出。<br>\
+				",
+                prototypes: ""
+            },
+            {
+                title: "Mix Use of AI<br>The Inflation Cookbook",
+                intro: "<a href='https://www.dentsucreative.com/cases/inflation-cookbook' taget='_blank'>DENTSU CREATIVE x The Inflation Cookbook</a><br>\
+				<iframe width='560' height='315' src='https://www.youtube.com/embed/72Cj7kL0BnE?si=S4LFxScZ3QUSIhv6' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe><br>\
+				Gold, Media Lions, 2024 Cannes Lions<br>\
+				",
+                userExperience: "The Inflation Cookbook 將當前經濟問題與日常生活緊密結合，<br>\
+				通過提供實用的食譜來應對通脹帶來的挑戰，<br>\
+				展示了品牌的社會責任感和人性化的一面。<br>\
+				AI 技術被用來進行網頁爬蟲，實時抓取食材的最新價格信息。<br>\
+				使消費者能夠獲得當前市場價格的準確數據，幫助他們做出更明智的購物決策<br>\
+				AI 根據用戶的購物習慣和當前經濟狀況，提供個性化的食材和食譜推薦，<br>\
+				進一步增強了用戶的參與感和滿意度<br>\
+				AI 還被用來自動生成食譜及其完成品的視覺效果。<br>\
+				提升用戶體驗，使食譜更具吸引力和實用性，鼓勵消費者嘗試新的健康飲食選擇<br>\
+				<br>\
+				",
+                technology: "這個活動包含了不同的 AI 技術應用，<br>\
+				Analytical AI 的部分有資料的蒐集、整理、分析、推薦等，<br>\
+				如何確保獲取的資料是高品質可被利用的，會是一大關鍵。<br>\
+				Generative AI 的部分包含食譜和圖片的生成。<br>\
+				",
+                resources: "創意、策略的發想和規劃，<br>\
+				資料工程師抓取資料處理和分析，產出想要的結果，<br>\
+				生成式AI專家生出合格的食譜，<br>\
+				前後端工程師整合成網站和APP的應用，<br>\
+				整個過程偏向是應用程式的開發，會比一般campaign執行需要更多的資源和時間。<br>\
+				",
+                prototypes: ""
+            }
+        ];
+
+        function updateContent(index) {
+            const caseStudy = cases[index];
+            caseContent.innerHTML = `
+                <h2 class="case-title">${caseStudy.title}</h2>
+                <div class="section">
+                    <h2>1. 案例說明</h2>
+                    <p align="center">${caseStudy.intro}</p>
+                </div>
+                <div class="section">
+                    <h2>2. 體驗設計</h2>
+                    <p align="center">${caseStudy.userExperience}</p>
+                </div>
+                <div class="section">
+                    <h2>3. AI應用</h2>
+                    <p align="center">${caseStudy.technology}</p>
+                </div>
+                <div class="section">
+                    <h2>4. 開發能力</h2>
+                    <p align="center">${caseStudy.resources}</p>
+                </div>
+                <div class="section">
+                    <h2>5. 其他資源</h2>
+                    <p align="center">${caseStudy.prototypes}</p>
+                </div>
+            `;
+        }
+
+        slider.addEventListener('input', function() {
+            updateContent(parseInt(this.value));
+        });
+
+        // Initialize with first case study
+        updateContent(0);
+    </script>
+</body>
+</html>
